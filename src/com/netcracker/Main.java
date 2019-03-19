@@ -1,3 +1,6 @@
+package com.netcracker;
+
+
 public class Main {
     public static void main(String[] args) {
         Ball ball = new Ball(11,11,10,-1,-1);//создаю мяч с движением в верхний левый угол

@@ -1,3 +1,5 @@
+package com.netcracker;
+
 public class Container {
     int x1;
     int y1;
@@ -31,5 +33,23 @@ public class Container {
             return true;
         }
         else return false;
+    }
+
+    @Override
+    public int hashCode(){
+        int hashCode = 59;
+        hashCode = 31* hashCode + x1;
+        hashCode = 31* hashCode + y1;
+        hashCode = 31* hashCode + x2;
+        hashCode = 31* hashCode + y2;
+        return hashCode;
+    }
+
+    @Override
+    public boolean equals(Object object){
+        if (this == object) return true;
+        if (object == null || !(object instanceof Container)) return false;
+        return x1 == ((Container) object).x1 && y1 == ((Container) object).y1 &&
+                x2 == ((Container) object).x2 && y2 == ((Container) object).y2;
     }
 }

@@ -1,3 +1,7 @@
+package com.netcracker;
+
+import java.util.Objects;
+
 public class MyPolynomial {
     double[] coeffs;
 
@@ -72,5 +76,21 @@ public class MyPolynomial {
             }
         }
         return new MyPolynomial(newCoeffs);
+    }
+
+    @Override
+    public int hashCode(){
+        int hashCode = 59;
+        for (double item: coeffs) {
+            hashCode = 31 * hashCode + (int)(Double.doubleToLongBits(item)^(Double.doubleToLongBits(item)>>>32));
+        }
+        return hashCode;
+    }
+
+    @Override
+    public boolean equals(Object object){
+        if (this == object) return true;
+        if (object == null || !(object instanceof MyComplex)) return false;
+        return  Objects.equals(coeffs,((MyPolynomial)object).coeffs);
     }
 }

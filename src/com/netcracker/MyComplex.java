@@ -1,3 +1,5 @@
+package com.netcracker;
+
 public class MyComplex {
     private double real = 0.0;
     private double imag = 0.0;
@@ -108,6 +110,21 @@ public class MyComplex {
 
     public MyComplex conjugate(){
         return new MyComplex(real, imag);
+    }
+
+    @Override
+    public int hashCode(){
+        int hashCode = 59;
+        hashCode = 31 * hashCode + (int)(Double.doubleToLongBits(real)^(Double.doubleToLongBits(real)>>>32));
+        hashCode = 31 * hashCode + (int)(Double.doubleToLongBits(imag)^(Double.doubleToLongBits(imag)>>>32));
+        return hashCode;
+    }
+
+    @Override
+    public boolean equals(Object object){
+        if (this == object) return true;
+        if (object == null || !(object instanceof MyComplex)) return false;
+        return real==((MyComplex) object).real && imag == ((MyComplex) object).imag;
     }
 
 }
